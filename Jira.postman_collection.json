@@ -1,0 +1,128 @@
+{
+	"info": {
+		"_postman_id": "bc14282a-cd6c-4ad4-b52c-929d6f80e268",
+		"name": "Jira",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Session Id making a post call",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n\t\"username\": \"testdata\", \n    \"password\": \"testdata\" \n}\n"
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/auth/1/session",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"auth",
+						"1",
+						"session"
+					]
+				},
+				"description": "http://localhost:8080/rest/auth/1/session"
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Issue",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "testdata",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "testdata",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"fields\": {\n       \"assignee\":{\"name\":\"testdata\"}\n   }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/api/2/issue/TRN-1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						"TRN-1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Issue",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic dGVzdGRhdGE6dGVzdGRhdGE="
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fields\": {\n       \"project\":\n       {\n          \"key\": \"TRN\"\n       },\n       \"summary\": \"REST ye merry gentlemen.\",\n       \"description\": \"Creating of an issue using project keys and issue type names using the REST API\",\n       \"issuetype\": {\n          \"name\": \"Story\"\n       }\n   }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/api/2/issue/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						""
+					]
+				},
+				"description": "user:password encoded to base64 and passed into Header as authorization"
+			},
+			"response": []
+		}
+	]
+}
